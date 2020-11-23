@@ -7,4 +7,8 @@ import com.qiutong.work.module.User;
 public interface IUserService {
 
     User getUser(int userId);
+
+    User getUserById(int userId);
+
+    int insertUser(User user);
 }
