@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qiutong.work.dao.bank.UserDao">
 
-    <select id="getUsers" resultType="com.qiutong.work.module.User">
+    <select id="getUsers" resultType="com.qiutong.work.model.User">
         select
         *
         from user where user_id = 1

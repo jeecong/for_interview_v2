@@ -1,10 +1,8 @@
 package com.qiutong.work.dao.bank;
 
-import com.qiutong.work.module.User;
+import com.qiutong.work.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 
 @Repository

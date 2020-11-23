@@ -1,7 +1,7 @@
 package com.qiutong.work.service;
 
 
-import com.qiutong.work.module.User;
+import com.qiutong.work.model.User;
 
 
 public interface IUserService {
