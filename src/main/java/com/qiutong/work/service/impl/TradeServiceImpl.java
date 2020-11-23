@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
+import java.util.List;
 
 
 @Service
@@ -55,6 +57,12 @@ public class TradeServiceImpl implements ITradeService {
     public double getBalance(int userId) {
         Balance balanceForUpdate = tradeDao.getBalanceForUpdate(userId);
         return balanceForUpdate.getCurrentBalance();
+    }
+
+    @Override
+    public List<Balance> getTradeFlows(Integer sourceUserId, Integer targetUserId, Date date) {
+        List<Balance> tradeFlows = tradeDao.getTradeFlows(sourceUserId, targetUserId, date);
+        return  tradeFlows;
     }
 }
 
