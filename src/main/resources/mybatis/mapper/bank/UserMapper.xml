@@ -9,4 +9,8 @@
         from user where user_id = 1
     </select>
 
+    <select id="getUserById" resultType="com.qiutong.work.model.User">
+        select * from `user` where user_id = #{userId} for update;
+    </select>
+
 </mapper>
