@@ -3,10 +3,7 @@ package com.qiutong.work.controller;
 import com.qiutong.work.base.Result;
 import com.qiutong.work.service.ITradeService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
@@ -20,7 +17,7 @@ public class TradeController {
         this.tradeService = tradeService;
     }
 
-    @GetMapping
+    @PostMapping
     public Result<Boolean> trade(@RequestParam Integer transferUserId, @RequestParam Integer payeeUserId, @RequestParam Double moneyAmount) {
         log.info("交易开始");
         try {
