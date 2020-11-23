@@ -3,16 +3,12 @@ package com.qiutong.work.controller;
 import com.qiutong.work.base.Result;
 import com.qiutong.work.enums.BizCodeEnum;
 import com.qiutong.work.enums.ErrorCodeEnum;
-import com.qiutong.work.model.Balance;
 import com.qiutong.work.model.TradeDetail;
 import com.qiutong.work.service.ITradeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-
-import javax.xml.crypto.Data;
-import java.util.Date;
 import java.util.List;
 
 @RestController
