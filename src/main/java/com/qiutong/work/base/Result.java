@@ -100,6 +100,14 @@ public class Result<T> implements Serializable {
         return result;
     }
 
+    public static <T> Result<T> success(T t,String msg, BizCodeEnum bizCodeEnum) {
+        Result<T> result = success();
+        result.setData(t);
+        result.setCode(bizCodeEnum.getCode());
+        result.setMessage(msg);
+        return result;
+    }
+
     public static <T> Result<T> success(Result<T> result) {
         if(result == null) {
             return success();

@@ -5,4 +5,6 @@ public interface ITradeService {
 
     boolean trade(int transferUserId, int payeeUserId, double moneyAmount);
 
+    double getBalance(int transferUserId);
+
 }

@@ -2,6 +2,7 @@ package com.qiutong.work.service.impl;
 
 import com.qiutong.work.dao.bank.TradeDao;
 import com.qiutong.work.dao.bank.UserDao;
+import com.qiutong.work.model.Balance;
 import com.qiutong.work.model.TradeDetail;
 import com.qiutong.work.model.User;
 import com.qiutong.work.service.ITradeService;
@@ -47,6 +48,12 @@ public class TradeServiceImpl implements ITradeService {
 
 
         return true;
+    }
+
+    @Override
+    public double getBalance(int userId) {
+        Balance balanceForUpdate = tradeDao.getBalanceForUpdate(userId);
+        return balanceForUpdate.getCurrentBalance();
     }
 }
 
