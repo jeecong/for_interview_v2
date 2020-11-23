@@ -7,10 +7,8 @@ import com.qiutong.work.enums.ErrorCodeEnum;
 import com.qiutong.work.model.User;
 import com.qiutong.work.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,16 +33,15 @@ public class UserController {
         }
     }
 
-    @GetMapping("/login")
+    @PostMapping ("/login")
     public Result<User> login(HttpServletRequest request, User user) {
-        if (user == null || user.getUserId() == null) {
+        if (user == null || StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getUsername())) {
             return Result.fail("参数异常", ErrorCodeEnum.EMPTY_PARAMETER);
         }
-        Integer userId = user.getUserId();
 
-        User userById = userService.getUserById(userId);
+        User userById = userService.getUserByName(user.getUsername(), user.getPassword());
         log.info("获取用户: {}", user.toString());
-        if (userById.getPassword() == user.getPassword()) {
+        if (userById != null) {
             return Result.success("登陆成功",BizCodeEnum.NORMAL);
         } else {
             return Result.fail("用户名或者密码错误", BizCodeEnum.LOGIN_FAIL);
@@ -52,7 +49,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/register")
+    @PostMapping ("/register")
     public Result<User> register(HttpServletRequest request, User user) {
         if (user == null || user.getPassword() == null || user.getPassword().equals("")
                 || user.getIdCard() == null || user.getIdCard().equals("") || user.getUsername() == null || user.getUsername().equals("")) {
@@ -66,6 +63,7 @@ public class UserController {
             }
 
         }catch (Exception e){
+            e.printStackTrace();
             return Result.fail("系统异常",ErrorCodeEnum.SYSTEM_ERROR);
         }
         return Result.fail("处理异常",ErrorCodeEnum.SYSTEM_ERROR);

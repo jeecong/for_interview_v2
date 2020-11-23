@@ -15,14 +15,14 @@
         from user where user_id = 1
     </select>
 
-    <select id ="getUserById" resultType="com.qiutong.work.model.User">
+    <select id ="getUserByName" resultType="com.qiutong.work.model.User">
         select
         *
-        from user where user_id = #{userId}
+        from user where username = #{username} and password = #{password}
     </select>
 
     <insert id ="insertUser"  parameterType="com.qiutong.work.model.User" useGeneratedKeys="true" keyProperty="userId">
-        insert into
+        insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="username != null">
                 username,

@@ -8,7 +8,7 @@ public interface IUserService {
 
     User getUser(int userId);
 
-    User getUserById(int userId);
+    User getUserByName(String username, String password);
 
     int insertUser(User user);
 }
