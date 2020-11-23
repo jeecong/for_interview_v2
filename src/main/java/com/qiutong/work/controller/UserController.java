@@ -4,7 +4,7 @@ package com.qiutong.work.controller;
 import com.qiutong.work.base.Result;
 import com.qiutong.work.enums.BizCodeEnum;
 import com.qiutong.work.enums.ErrorCodeEnum;
-import com.qiutong.work.module.User;
+import com.qiutong.work.model.User;
 import com.qiutong.work.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

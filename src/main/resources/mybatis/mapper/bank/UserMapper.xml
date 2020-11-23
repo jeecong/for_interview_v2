@@ -9,7 +9,7 @@
         <result column="id_card" jdbcType="BIGINT" property="idCard" />
         <result column="password" jdbcType="INTEGER" property="password" />
     </resultMap>
-    <select id="getUsers" resultType="com.qiutong.work.module.User">
+    <select id="getUsers" resultType="com.qiutong.work.model.User">
         select
         *
         from user where user_id = 1

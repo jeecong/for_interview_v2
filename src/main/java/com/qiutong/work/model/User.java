@@ -1,4 +1,4 @@
-package com.qiutong.work.module;
+package com.qiutong.work.model;
 
 import lombok.Data;
 
