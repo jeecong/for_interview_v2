@@ -1,5 +1,6 @@
 package com.qiutong.work.base;
 
+import com.qiutong.work.enums.BizCodeEnum;
 import com.qiutong.work.enums.ErrorCodeEnum;
 import lombok.Data;
 
@@ -12,9 +13,33 @@ public class Result<T> implements Serializable {
 
     private T data;
 
-    private Integer errorCode = ErrorCodeEnum.SYSTEM_ERROR.getCode();
+    private Integer code = ErrorCodeEnum.SYSTEM_ERROR.getCode();
 
     private String message = ErrorCodeEnum.SYSTEM_ERROR.getText();
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public Integer getCode() {
+        return code;
+    }
+
+    public void setCode(Integer code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
     public Result() {
     }
@@ -29,17 +54,43 @@ public class Result<T> implements Serializable {
         return result;
     }
 
+    public static <T> Result<T> fail(String msg,ErrorCodeEnum codeEnum) {
+        Result<T> result = fail();
+        result.setMessage(msg);
+        result.setCode(codeEnum.getCode());
+        return result;
+    }
+    public static <T> Result<T> fail(String msg, BizCodeEnum bizCodeEnum) {
+        Result<T> result = fail();
+        result.setMessage(msg);
+        result.setCode(bizCodeEnum.getCode());
+        return result;
+    }
+    public static <T> Result<T> fail( BizCodeEnum bizCodeEnum) {
+        Result<T> result = fail();
+        result.setMessage(bizCodeEnum.getDesc());
+        result.setCode(bizCodeEnum.getCode());
+        return result;
+    }
+
     public static <T> Result<T> fail(ErrorCodeEnum codeEnum) {
         Result<T> result = new Result<>();
-        result.setErrorCode(codeEnum.getCode());
+        result.setCode(codeEnum.getCode());
         result.setMessage(codeEnum.getText());
+        return result;
+    }
+
+    public static <T> Result<T> success(String msg, BizCodeEnum bizCodeEnum) {
+        Result<T> result = new Result<>();
+        result.setCode(bizCodeEnum.getCode());
+        result.setMessage(msg);
         return result;
     }
 
     public static <T> Result<T> success() {
         Result<T> result = new Result<>();
         result.setMessage("执行成功!");
-        result.setErrorCode(0);
+        result.setCode(0);
         return result;
     }
 
@@ -54,9 +105,11 @@ public class Result<T> implements Serializable {
             return success();
         } else {
             result.setMessage("执行成功!");
-            result.setErrorCode(0);
+            result.setCode(0);
             return result;
         }
     }
+
+
 
 }

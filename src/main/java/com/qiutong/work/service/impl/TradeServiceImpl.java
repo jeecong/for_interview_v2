@@ -39,7 +39,7 @@ public class TradeServiceImpl implements ITradeService {
         tradeDao.tradeDetail(tradeDetail);
 
         // 减金额
-        tradeDao.updateBalance(transferUserId, 1.0);
+        tradeDao.updateBalance(transferUserId, transferUser);
 
         // 加金额
         tradeDao.updateBalance(payeeUserId, 1.0);

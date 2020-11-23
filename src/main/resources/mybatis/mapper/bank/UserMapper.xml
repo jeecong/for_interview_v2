@@ -3,14 +3,49 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qiutong.work.dao.bank.UserDao">
 
+    <resultMap id="user" type="com.qiutong.work.model.User">
+        <id column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="username" jdbcType="INTEGER" property="username" />
+        <result column="id_card" jdbcType="BIGINT" property="idCard" />
+        <result column="password" jdbcType="INTEGER" property="password" />
+    </resultMap>
     <select id="getUsers" resultType="com.qiutong.work.model.User">
         select
         *
         from user where user_id = 1
     </select>
 
-    <select id="getUserById" resultType="com.qiutong.work.model.User">
-        select * from `user` where user_id = #{userId} for update;
+    <select id ="getUserById" resultType="com.qiutong.work.model.User">
+        select
+        *
+        from user where user_id = #{userId}
     </select>
+
+    <insert id ="insertUser"  parameterType="com.qiutong.work.model.User" useGeneratedKeys="true" keyProperty="userId">
+        insert into
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="idCard != null">
+                id_card,
+            </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="idCard != null">
+                #{idCard,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
 
 </mapper>

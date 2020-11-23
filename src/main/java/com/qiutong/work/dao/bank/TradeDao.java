@@ -1,5 +1,6 @@
 package com.qiutong.work.dao.bank;
 
+import com.qiutong.work.model.Balance;
 import com.qiutong.work.model.TradeDetail;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,4 +32,11 @@ public interface TradeDao {
      */
     Boolean updateTradeDetail(@Param("id") Integer id, @Param("tag") Integer tag);
 
+
+    /**
+     * 获取余额
+     *
+     * @return
+     */
+    Balance getBalanceForUpdate(@Param("userId") Integer userId);
 }

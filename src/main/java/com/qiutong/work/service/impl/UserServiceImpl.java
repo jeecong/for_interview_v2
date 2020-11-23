@@ -21,6 +21,16 @@ public class UserServiceImpl implements IUserService {
     public User getUser(int userId) {
         return userDao.getUsers();
     }
+
+    @Override
+    public User getUserById(int userId){
+        return userDao.getUserById(userId);
+    }
+
+    @Override
+    public int insertUser(User user) {
+        return userDao.insertUser(user);
+    }
 }
 
 

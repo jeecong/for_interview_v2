@@ -16,4 +16,8 @@
         update trade_detail set tag = #{tag} where id = #{id}
     </update>
 
+    <select id="getBalanceForUpdate" resultType="com.qiutong.work.model.Balance">
+        select * from balance where user_id = #{userId} for update;
+    </select>
+
 </mapper>
