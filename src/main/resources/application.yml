@@ -2,3 +2,17 @@ server:
   port: 8080
   servlet:
     context-path: /bank
+
+spring:
+  datasource:
+    bank:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/ebank?useSSL=false&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initialSize: 1      #初始化连接
+      minIdle: 3          #最小空闲连接
+      maxActive: 50       #最大同时连接数量
+      maxWait: 2000      #超时等待时间 2秒
+      timeBetweenEvictionRunsMillis: 1800000 #每半小时运行一次空闲连接回收
+      minEvictableIdleTimeMillis: 3600000   #空闲时间超过1小时的空闲连接被回收
