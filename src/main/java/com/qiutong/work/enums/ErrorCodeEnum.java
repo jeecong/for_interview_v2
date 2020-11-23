@@ -7,10 +7,7 @@ import lombok.Getter;
 import java.util.Arrays;
 import java.util.Map;
 
-/**
- * @author ytp
- * @date 2020/9/21
- */
+
 @Getter
 @AllArgsConstructor
 public enum ErrorCodeEnum {

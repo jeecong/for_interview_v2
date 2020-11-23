@@ -5,10 +5,6 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @author ytp
- * @date 2020/9/21
- */
 
 @Data
 public class Page<T> implements Serializable {

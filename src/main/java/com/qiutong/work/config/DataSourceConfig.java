@@ -7,16 +7,12 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.sql.DataSource;
 
-/**
- * @author ytp
- * @date 2020/9/21
- */
 
 @Configuration
 public class DataSourceConfig {
 
-    @Bean(name = "oxp")
-    @ConfigurationProperties(prefix = "spring.datasource.oxp")
+    @Bean(name = "bank")
+    @ConfigurationProperties(prefix = "spring.datasource.bank")
     public DataSource oxpDbDataSource() {
         return DataSourceBuilder.create().build();
     }
