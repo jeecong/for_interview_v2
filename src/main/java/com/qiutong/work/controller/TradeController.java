@@ -3,7 +3,7 @@ package com.qiutong.work.controller;
 import com.qiutong.work.base.Result;
 import com.qiutong.work.enums.BizCodeEnum;
 import com.qiutong.work.enums.ErrorCodeEnum;
-import com.qiutong.work.model.Balance;
+import com.qiutong.work.model.TradeDetail;
 import com.qiutong.work.service.ITradeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.crypto.Data;
 import java.util.Date;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -47,12 +48,13 @@ public class TradeController {
     }
 
     @GetMapping("/getTradeFlows")
-    public Result<List<Balance>> getTradeFlows(HttpServletRequest request, @RequestParam Integer sourceUserId, @RequestParam Integer targetUserId, @RequestParam Date date) {
+    public Result<List<TradeDetail>> getTradeFlows(HttpServletRequest request, @RequestParam(required = false) Integer sourceUserId, @RequestParam(required = false) Integer targetUserId, @RequestParam(required = false) String date) {
         log.info("查询");
         try {
-            List<Balance> balance = tradeService.getTradeFlows(sourceUserId,targetUserId,date);
+            List<TradeDetail> balance = tradeService.getTradeFlows(sourceUserId,targetUserId,date);
             return Result.success(balance,"成功",BizCodeEnum.NORMAL);
         } catch (Exception e) {
+            e.printStackTrace();
             return Result.fail("系统异常", ErrorCodeEnum.SYSTEM_ERROR);
         }
     }

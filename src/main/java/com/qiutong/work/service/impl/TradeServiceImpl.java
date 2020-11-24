@@ -60,8 +60,8 @@ public class TradeServiceImpl implements ITradeService {
     }
 
     @Override
-    public List<Balance> getTradeFlows(Integer sourceUserId, Integer targetUserId, Date date) {
-        List<Balance> tradeFlows = tradeDao.getTradeFlows(sourceUserId, targetUserId, date);
+    public List<TradeDetail> getTradeFlows(Integer sourceUserId, Integer targetUserId, String date) {
+        List<TradeDetail> tradeFlows = tradeDao.getTradeFlows(sourceUserId, targetUserId, date);
         return  tradeFlows;
     }
 }

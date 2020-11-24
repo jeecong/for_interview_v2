@@ -1,7 +1,7 @@
 package com.qiutong.work.service;
 
 
-import com.qiutong.work.model.Balance;
+import com.qiutong.work.model.TradeDetail;
 
 import java.util.Date;
 import java.util.List;
@@ -12,6 +12,6 @@ public interface ITradeService {
 
     double getBalance(int transferUserId);
 
-    List<Balance> getTradeFlows(Integer sourceUserId, Integer targetUserId, Date date);
+    List<TradeDetail> getTradeFlows(Integer sourceUserId, Integer targetUserId, String date);
 
 }

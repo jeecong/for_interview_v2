@@ -20,14 +20,14 @@
         select * from balance where user_id = #{userId} for update;
     </select>
 
-    <select id="getTradeFlows" resultType="com.qiutong.work.model.Balance">
+    <select id="getTradeFlows" resultType="com.qiutong.work.model.TradeDetail">
         select * from trade_detail
         <where>
             <if test="sourceUserId != null">
                 AND source_user_id = #{sourceUserId}
             </if>
             <if test="targetUserId != null">
-                AND target_use_id = #{targetUserId}
+                AND target_user_id = #{targetUserId}
             </if>
             <if test="date != null">
                 AND ctime > #{date}
