@@ -8,6 +8,7 @@ import com.qiutong.work.service.ITradeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
@@ -46,7 +47,7 @@ public class TradeController {
     }
 
     @GetMapping("/getTradeFlows")
-    public Result<List<Balance>> getTradeFlows(HttpServletRequest request, @RequestParam Integer sourceUserId,@RequestParam Integer targetUserId,@RequestParam Date date) {
+    public Result<List<Balance>> getTradeFlows(HttpServletRequest request, @RequestParam Integer sourceUserId, @RequestParam Integer targetUserId, @RequestParam Date date) {
         log.info("查询");
         try {
             List<Balance> balance = tradeService.getTradeFlows(sourceUserId,targetUserId,date);
